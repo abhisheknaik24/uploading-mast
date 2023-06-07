@@ -1,8 +1,9 @@
-import Panel from '@/components/panel/Panel';
-import Sidebar from '@/components/sidebar/Sidebar';
-import Providers from '@/redux/Providers';
 import '@/styles/globals.css';
+
 import { Figtree } from 'next/font/google';
+import Player from '@/components/player/Player';
+import Providers from '@/redux/Providers';
+import Sidebar from '@/components/sidebar/Sidebar';
 
 const font = Figtree({ subsets: ['latin'] });
 
@@ -19,12 +20,12 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`flex h-screen w-full items-start justify-start gap-4 overflow-hidden bg-black p-2 text-white ${font.className}`}
+        className={`mx-auto flex h-screen w-full max-w-screen-2xl items-start justify-start gap-4 overflow-hidden bg-black p-2 text-white ${font.className}`}
       >
         <Providers>
           <Sidebar />
           {children}
-          <Panel />
+          <Player />
         </Providers>
       </body>
     </html>

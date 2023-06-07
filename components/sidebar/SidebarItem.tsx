@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { IconType } from 'react-icons';
+import Link from 'next/link';
 
 interface SidebarItemProps {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     <Link
       href={href}
       className={`flex items-center justify-start gap-4 transition-all delay-100 ease-linear hover:scale-105 hover:text-white ${
-        active ? 'text-white' : 'text-gray-300'
+        active ? 'text-white' : 'text-neutral-400'
       }`}
     >
       <Icon size={25} />
