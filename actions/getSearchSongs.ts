@@ -1,4 +1,4 @@
-export const getSearchSongs = async (search: string | null) => {
+export const getSearchSongs = async ({ search }: { search: string | null }) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API}/api/getFilterSongs?search=${search}`
   );

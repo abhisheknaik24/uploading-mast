@@ -11,11 +11,12 @@ const SongList: React.FC<SongListProps> = ({ songs }) => {
       {songs.map((song) => (
         <SongListDetails
           key={song.id}
+          id={song.id}
           title={song.title}
           desc={song.desc}
           author={song.author}
           thumbnail={song.thumbnail}
-          audioLink={song.audioLink}
+          audio={song.audio}
           liked={song.liked}
         />
       ))}

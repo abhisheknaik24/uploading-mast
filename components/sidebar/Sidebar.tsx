@@ -1,22 +1,23 @@
 'use client';
 
+import { BiSearch } from 'react-icons/bi';
 import Box from '../box/Box';
 import { HiHome } from 'react-icons/hi';
-import { BiSearch } from 'react-icons/bi';
-import { usePathname } from 'next/navigation';
 import Logo from '../logo/Logo';
 import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
+import { IRoute } from '@/types/types';
 
 const SidebarItem = dynamic(() => import('./SidebarItem'), {
   loading: () => (
-    <div className='h-6 w-full rounded-sm bg-neutral-500/50'></div>
+    <div className='h-6 w-full animate-pulse rounded-sm bg-neutral-500/50'></div>
   ),
   ssr: false,
 });
 
 const Library = dynamic(() => import('../library/Library'), {
   loading: () => (
-    <div className='flex flex-col items-start justify-start gap-4'>
+    <div className='flex animate-pulse flex-col items-start justify-start gap-4'>
       <div className='h-6 w-full rounded-sm bg-neutral-500/50'></div>
       <div className='h-10 w-full rounded-sm bg-neutral-500/50'></div>
       <div className='h-10 w-full rounded-sm bg-neutral-500/50'></div>
@@ -31,7 +32,7 @@ const Library = dynamic(() => import('../library/Library'), {
 const Sidebar = () => {
   const pathname = usePathname();
 
-  const routes = [
+  const routes: IRoute[] = [
     {
       href: '/',
       icon: HiHome,

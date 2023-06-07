@@ -1,11 +1,24 @@
-import { use } from 'react';
-import { TbPlaylist } from 'react-icons/tb';
+'use client';
+
 import { BsPlus } from 'react-icons/bs';
-import { getLibrarySongs } from '@/actions/getLibrarySongs';
 import LibrarySongList from './LibrarySongList';
+import { TbPlaylist } from 'react-icons/tb';
+import { getLibrarySongs } from '@/actions/getLibrarySongs';
+import { use, useCallback, useEffect, useState } from 'react';
+import { ISong } from '@/types/types';
 
 const Library = () => {
-  const songs = use(getLibrarySongs());
+  const [songs, setSongs] = useState<ISong[]>([]);
+
+  const fetchLibrarySongs = useCallback(async () => {
+    const librarySongs: ISong[] = await getLibrarySongs();
+
+    setSongs(librarySongs);
+  }, []);
+
+  useEffect(() => {
+    fetchLibrarySongs();
+  }, []);
 
   return (
     <div className='flex h-full w-full flex-col items-start justify-start gap-4'>

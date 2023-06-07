@@ -1,15 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { IPlaylist, ISong } from '@/types/types';
+
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { ICurrentSong, ISong } from '@/types/types';
+import { createSlice } from '@reduxjs/toolkit';
 
 export interface SongState {
   songs: ISong[];
-  currentSong: ICurrentSong | null;
+  currentSong: ISong | null;
+  currentPlaylist: IPlaylist;
 }
 
 const initialState: SongState = {
   songs: [],
   currentSong: null,
+  currentPlaylist: {
+    category: 'newest-songs',
+    label: 'Newest Songs',
+  },
 };
 
 export const songSlice = createSlice({
@@ -17,32 +23,29 @@ export const songSlice = createSlice({
   initialState,
   reducers: {
     addSongs: (state: SongState, action: PayloadAction<ISong[]>) => {
-      if (action.payload) {
-        state.songs = action.payload;
+      state.songs = action.payload;
+    },
+    addCurrentSongId: (state: SongState, action: PayloadAction<string>) => {
+      const data: ISong | undefined = state.songs.find(
+        (song) => song.id === action.payload
+      );
+
+      if (data) {
+        state.currentSong = data;
+      } else {
+        state.currentSong = null;
       }
     },
-    addCurrentPlaySong: (
+    addCurrentPlaylist: (
       state: SongState,
-      action: PayloadAction<ICurrentSong>
+      action: PayloadAction<IPlaylist>
     ) => {
-      if (action.payload) {
-        state.currentSong = action.payload;
-      }
-    },
-    updateSongPlay: (state: SongState) => {
-      if (state.currentSong) {
-        state.currentSong.isPlay = !state.currentSong.isPlay;
-      }
-    },
-    updateSongMute: (state: SongState) => {
-      if (state.currentSong) {
-        state.currentSong.isMute = !state.currentSong.isMute;
-      }
+      state.currentPlaylist = action.payload;
     },
   },
 });
 
-export const { addSongs, addCurrentPlaySong, updateSongPlay, updateSongMute } =
+export const { addSongs, addCurrentSongId, addCurrentPlaylist } =
   songSlice.actions;
 
 export default songSlice.reducer;

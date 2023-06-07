@@ -1,9 +1,9 @@
 'use client';
 
 import { ISong } from '@/types/types';
+import { RootState } from '@/redux/store';
 import SongCardDetails from './SongCardDetails';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store';
 
 const SongCard: React.FC = () => {
   const songs: ISong[] = useSelector((state: RootState) => state.song.songs);
@@ -18,7 +18,7 @@ const SongCard: React.FC = () => {
           desc={song.desc}
           author={song.author}
           thumbnail={song.thumbnail}
-          audioLink={song.audioLink}
+          audio={song.audio}
           liked={song.liked}
         />
       ))}

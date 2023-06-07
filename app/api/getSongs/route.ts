@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export async function GET(req: Request) {
+export async function GET() {
   let data = [
     {
       id: 1,
@@ -9,8 +9,9 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
+      category: 'newest-songs',
     },
     {
       id: 2,
@@ -19,8 +20,9 @@ export async function GET(req: Request) {
       author: 'Imagine Dragons',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/bones-the-boys.mp3',
+      audio: '/audio/bones-the-boys.mp3',
       liked: true,
+      category: 'liked-songs',
     },
     {
       id: 3,
@@ -29,8 +31,9 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
+      category: 'newest-songs',
     },
     {
       id: 4,
@@ -39,8 +42,9 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
+      category: 'newest-songs',
     },
     {
       id: 5,
@@ -49,8 +53,9 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
+      category: 'newest-songs',
     },
     {
       id: 6,
@@ -59,8 +64,9 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
+      category: 'newest-songs',
     },
     {
       id: 7,
@@ -69,8 +75,9 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
+      category: 'liked-songs',
     },
     {
       id: 8,
@@ -79,8 +86,9 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
+      category: 'liked-songs',
     },
     {
       id: 9,
@@ -89,8 +97,9 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
+      category: 'liked-songs',
     },
     {
       id: 10,
@@ -99,8 +108,9 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
-      liked: false,
+      audio: '/audio/you-are-my-future-startup.mp3',
+      liked: true,
+      category: 'liked-songs',
     },
   ];
 

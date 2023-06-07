@@ -12,7 +12,7 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
     },
     {
@@ -22,7 +22,7 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
     },
     {
@@ -32,7 +32,7 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
     },
     {
@@ -42,7 +42,7 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
     },
     {
@@ -52,7 +52,7 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
     },
     {
@@ -62,7 +62,7 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
     },
     {
@@ -72,7 +72,7 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
     },
     {
@@ -82,7 +82,7 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
     },
     {
@@ -92,7 +92,7 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: true,
     },
     {
@@ -102,7 +102,7 @@ export async function GET(req: Request) {
       author: 'Red Velvet',
       thumbnail:
         'https://i.ytimg.com/vi/oiNkumxPVzU/hq720.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARh_IC4oITAP&amp;rs=AOn4CLBb8i24MCbiwA-ZOLEyEwZ2a1qdSg',
-      audioLink: '/audio/you-are-my-future-startup.mp3',
+      audio: '/audio/you-are-my-future-startup.mp3',
       liked: false,
     },
   ];
