@@ -1,17 +1,21 @@
 'use client';
 
-import { useEffect } from 'react';
-
+import { getCategories } from '@/actions/getCategories';
+import { getSongs } from '@/actions/getSongs';
 import Box from '@/components/box/Box';
 import Header from '@/components/header/Header';
-import { IPlaylist, ISong } from '@/types/types';
-import { addCurrentPlaylist, addSongs } from '@/redux/song/songSlice';
-import dynamic from 'next/dynamic';
-import { getSongs } from '@/actions/getSongs';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  addCategories,
+  addCurrentCategoryId,
+  addSongs,
+} from '@/redux/song/songSlice';
 import { RootState } from '@/redux/store';
+import { ICategory, IResponse } from '@/types/types';
+import dynamic from 'next/dynamic';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Playlist = dynamic(() => import('@/components/playlist/Playlist'), {
+const Category = dynamic(() => import('@/components/category/Category'), {
   loading: () => (
     <div className='h-16 w-full animate-pulse rounded-sm bg-neutral-500/50'></div>
   ),
@@ -39,78 +43,79 @@ const SongCard = dynamic(() => import('@/components/songCard/SongCard'), {
 const Home = () => {
   const dispatch = useDispatch();
 
-  const currentPlaylist: IPlaylist = useSelector(
-    (state: RootState) => state.song.currentPlaylist
+  const categories: ICategory[] = useSelector(
+    (state: RootState) => state.song.categories
   );
 
-  const handlePlaylist = (category: string, label: string) => {
-    dispatch(addCurrentPlaylist({ category: category, label: label }));
-  };
+  const currentCategory: ICategory | null = useSelector(
+    (state: RootState) => state.song.currentCategory
+  );
 
   useEffect(() => {
-    const fetchSongs = async () => {
-      const songs: ISong[] = await getSongs({
-        category: currentPlaylist.category,
-      });
+    const fetchCategories = async () => {
+      const data: IResponse = await getCategories();
 
-      dispatch(addSongs(songs));
+      if (data.success && data.data.categories.length > 0) {
+        dispatch(addCategories(data.data.categories));
+
+        dispatch(addCurrentCategoryId(data.data.categories[0]._id));
+      }
     };
 
-    fetchSongs();
-  }, [currentPlaylist, dispatch]);
+    fetchCategories();
+  }, [dispatch]);
 
-  const playlist: IPlaylist[] = [
-    {
-      category: 'newest-songs',
-      image:
-        'https://images.unsplash.com/photo-1682687221323-6ce2dbc803ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
-      label: 'Newest Songs',
-    },
-    {
-      category: 'liked-songs',
-      image:
-        'https://images.unsplash.com/photo-1682687221323-6ce2dbc803ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
-      label: 'Liked Songs',
-    },
-    {
-      category: 'popular-songs',
-      image:
-        'https://images.unsplash.com/photo-1682687221323-6ce2dbc803ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
-      label: 'Popular Songs',
-    },
-  ];
+  useEffect(() => {
+    if (currentCategory) {
+      const fetchSongs = async () => {
+        const data: IResponse = await getSongs({
+          categoryId: currentCategory._id,
+        });
+
+        if (data.success && data.data.songs.length > 0) {
+          dispatch(addSongs(data.data.songs));
+        }
+      };
+
+      fetchSongs();
+    }
+  }, [currentCategory, dispatch]);
 
   return (
     <div className='h-full w-full overflow-y-auto'>
       <Box className='min-h-full'>
         <Header>
           <div>
-            <div>
-              <h1 className='mb-6 text-4xl font-bold'>Welcome Back</h1>
-            </div>
-            <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'>
-              {playlist.map((i) => (
-                <Playlist
-                  key={i.label}
-                  category={i.category}
-                  image={i.image}
-                  label={i.label}
-                  handlePlaylist={handlePlaylist}
+            <h1 className='mb-6 text-4xl font-bold'>Welcome Back</h1>
+          </div>
+          <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'>
+            {categories &&
+              categories.map((category) => (
+                <Category
+                  key={category._id}
+                  _id={category._id}
+                  category={category.category}
+                  image='https://images.unsplash.com/photo-1682687221323-6ce2dbc803ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'
+                  name={category.name}
+                  handleCategory={(id) => dispatch(addCurrentCategoryId(id))}
                 />
               ))}
-            </div>
           </div>
         </Header>
-        <div className='p-4'>
-          <div className='flex h-full w-full flex-col items-start justify-start gap-4'>
-            <div>
-              <h3 className='text-2xl font-bold'>Newest Songs</h3>
-            </div>
-            <div className='w-full'>
-              <SongCard />
+        {currentCategory && (
+          <div className='p-4'>
+            <div className='flex h-full w-full flex-col items-start justify-start gap-4'>
+              <div>
+                <h3 className='text-2xl font-bold capitalize'>
+                  {currentCategory.name}
+                </h3>
+              </div>
+              <div className='w-full'>
+                <SongCard />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </Box>
     </div>
   );

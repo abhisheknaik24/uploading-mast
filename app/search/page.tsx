@@ -1,13 +1,12 @@
 'use client';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-
+import { getSearchSongs } from '@/actions/getSearchSongs';
 import Box from '@/components/box/Box';
 import Header from '@/components/header/Header';
+import { IResponse, ISong } from '@/types/types';
 import dynamic from 'next/dynamic';
-import { getSearchSongs } from '@/actions/getSearchSongs';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ISong } from '@/types/types';
 
 const Input = dynamic(() => import('@/components/input/Input'), {
   loading: () => (
@@ -36,9 +35,7 @@ const SongList = dynamic(() => import('@/components/songList/SongList'), {
   ssr: false,
 });
 
-const Home = async () => {
-  const [songs, setSongs] = useState<ISong[]>([]);
-
+const Home = () => {
   const pathname = usePathname();
 
   const router = useRouter();
@@ -47,19 +44,23 @@ const Home = async () => {
 
   const search = searchParams.get('search');
 
-  useEffect(() => {
-    const fetchSearchSongs = async () => {
-      const songs: ISong[] = await getSearchSongs({ search: search });
-
-      setSongs(songs);
-    };
-
-    fetchSearchSongs();
-  }, [search]);
+  const [songs, setSongs] = useState<ISong[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     router.push(`${pathname}?search=${e.target.value}`);
   };
+
+  useEffect(() => {
+    const fetchSearchSongs = async () => {
+      const data: IResponse = await getSearchSongs({ search: search });
+
+      if (data.success && data.data.songs.length > 0) {
+        setSongs(data.data.songs);
+      }
+    };
+
+    fetchSearchSongs();
+  }, [search]);
 
   return (
     <div className='h-full w-full'>

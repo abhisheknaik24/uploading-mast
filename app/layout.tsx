@@ -1,9 +1,8 @@
-import '@/styles/globals.css';
-
-import { Figtree } from 'next/font/google';
 import Player from '@/components/player/Player';
-import Providers from '@/redux/Providers';
 import Sidebar from '@/components/sidebar/Sidebar';
+import Providers from '@/redux/Providers';
+import '@/styles/globals.css';
+import { Figtree } from 'next/font/google';
 
 const font = Figtree({ subsets: ['latin'] });
 

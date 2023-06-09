@@ -1,12 +1,12 @@
 'use client';
 
-import { BiSearch } from 'react-icons/bi';
-import Box from '../box/Box';
-import { HiHome } from 'react-icons/hi';
-import Logo from '../logo/Logo';
+import { IRoute } from '@/types/types';
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-import { IRoute } from '@/types/types';
+import { BiSearch } from 'react-icons/bi';
+import { HiHome } from 'react-icons/hi';
+import Box from '../box/Box';
+import Logo from '../logo/Logo';
 
 const SidebarItem = dynamic(() => import('./SidebarItem'), {
   loading: () => (

@@ -2,22 +2,21 @@ import { ISong } from '@/types/types';
 import LibrarySongDetails from './LibrarySongDetails';
 
 interface LibrarySongListProps {
-  songs: ISong[];
+  librarySongs: ISong[];
 }
 
-const LibrarySongList: React.FC<LibrarySongListProps> = ({ songs }) => {
+const LibrarySongList: React.FC<LibrarySongListProps> = ({ librarySongs }) => {
   return (
     <div className='grid grid-cols-1 gap-4'>
-      {songs.map((song) => (
+      {librarySongs.map((librarySong) => (
         <LibrarySongDetails
-          key={song.id}
-          id={song.id}
-          title={song.title}
-          desc={song.desc}
-          author={song.author}
-          thumbnail={song.thumbnail}
-          audio={song.audio}
-          liked={song.liked}
+          key={librarySong._id}
+          _id={librarySong._id}
+          title={librarySong.title}
+          desc={librarySong.desc}
+          author={librarySong.author}
+          thumbnail={librarySong.thumbnail}
+          audio={librarySong.audio}
         />
       ))}
     </div>

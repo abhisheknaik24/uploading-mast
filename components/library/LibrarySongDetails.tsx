@@ -1,28 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
-
+import { addCurrentSongId } from '@/redux/song/songSlice';
+import { RootState } from '@/redux/store';
 import { ISong } from '@/types/types';
 import Image from 'next/image';
-import { RootState } from '@/redux/store';
-import { addCurrentSongId } from '@/redux/song/songSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-interface LibrarySongDetailsProps {
-  id: string;
-  title: string;
-  desc: string;
-  author: string;
-  thumbnail: string;
-  audio: string;
-  liked?: boolean;
-}
-
-const LibrarySongDetails: React.FC<LibrarySongDetailsProps> = ({
-  id,
+const LibrarySongDetails: React.FC<ISong> = ({
+  _id,
   title,
   desc,
   author,
   thumbnail,
   audio,
-  liked,
 }) => {
   const dispatch = useDispatch();
 
@@ -33,14 +21,14 @@ const LibrarySongDetails: React.FC<LibrarySongDetailsProps> = ({
   return (
     <div
       className={`flex w-full cursor-pointer items-center justify-start gap-2 rounded-sm transition-all delay-100 ease-linear hover:scale-105 ${
-        currentSong?.id === id &&
+        currentSong?._id === _id &&
         'animate-pulse bg-green-800/50 hover:bg-green-800'
       }`}
-      onClick={() => dispatch(addCurrentSongId(id))}
+      onClick={() => dispatch(addCurrentSongId(_id))}
     >
       <div className='relative h-10 w-10'>
         <Image
-          src={thumbnail}
+          src={process.env.NEXT_PUBLIC_API + '/images/' + thumbnail}
           alt={title}
           className='rounded-sm object-cover'
           fill

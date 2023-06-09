@@ -1,22 +1,22 @@
 import { IInput } from '@/types/types';
-import Input from '../input/Input';
 import Button from '../button/Button';
+import Input from '../input/Input';
 
 interface AuthProps {
-  children: React.ReactNode;
   heading: string;
   inputs: IInput[];
   isSignIn: boolean;
+  isSentOTP: boolean;
   setSignIn: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 const Auth: React.FC<AuthProps> = ({
-  children,
   heading,
   inputs,
   isSignIn,
+  isSentOTP,
   setSignIn,
   handleInputChange,
   handleSubmit,
@@ -26,9 +26,7 @@ const Auth: React.FC<AuthProps> = ({
       <div>
         <h1 className='text-4xl font-bold'>{heading}</h1>
       </div>
-      <div className='flex w-full flex-col items-start justify-start gap-6 rounded-md bg-neutral-800 p-4 shadow-md md:px-6 md:py-4'>
-        <div>{children}</div>
-        <div className='w-full border-t border-neutral-300' />
+      <div className='flex w-full flex-col items-start justify-start rounded-md bg-neutral-800 p-4 shadow-md md:p-6'>
         <form
           className='flex w-full flex-col items-start justify-start gap-8'
           onSubmit={handleSubmit}
@@ -49,7 +47,7 @@ const Auth: React.FC<AuthProps> = ({
               ))}
           </div>
           <div className='flex w-full flex-col items-start justify-start gap-4'>
-            {!isSignIn ? (
+            {!isSignIn && !isSentOTP && (
               <>
                 <Button
                   type='submit'
@@ -65,7 +63,8 @@ const Auth: React.FC<AuthProps> = ({
                   Sign In
                 </Button>
               </>
-            ) : (
+            )}
+            {isSignIn && !isSentOTP && (
               <>
                 <Button
                   type='submit'
@@ -81,6 +80,14 @@ const Auth: React.FC<AuthProps> = ({
                   Sign Up
                 </Button>
               </>
+            )}
+            {isSentOTP && (
+              <Button
+                type='submit'
+                className='w-full cursor-pointer rounded-md bg-emerald-700/50 py-2 font-semibold text-white shadow-sm hover:bg-emerald-700'
+              >
+                Submit
+              </Button>
             )}
           </div>
         </form>

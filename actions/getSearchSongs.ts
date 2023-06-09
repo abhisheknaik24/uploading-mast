@@ -1,13 +1,13 @@
 export const getSearchSongs = async ({ search }: { search: string | null }) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/api/getFilterSongs?search=${search}`
-  );
+  let url: string = '';
 
-  const data = await res.json();
-
-  if (data.status) {
-    return data.data;
+  if (search) {
+    url = `${process.env.NEXT_PUBLIC_API}/api/songs/getSearchSongs?search=${search}`;
+  } else {
+    url = `${process.env.NEXT_PUBLIC_API}/api/songs/getSearchSongs`;
   }
 
-  return null;
+  const res = await fetch(url);
+
+  return res.json();
 };
