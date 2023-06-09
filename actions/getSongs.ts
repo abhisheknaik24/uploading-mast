@@ -1,11 +1,7 @@
-export const getSongs = async ({ category }: { category: string }) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/getSongs`);
+export const getSongs = async ({ categoryId }: { categoryId: string }) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API}/api/songs/getSongs/${categoryId}`
+  );
 
-  const data = await res.json();
-
-  if (data.status) {
-    return data.data;
-  }
-
-  return null;
+  return res.json();
 };

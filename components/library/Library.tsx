@@ -1,37 +1,54 @@
 'use client';
 
-import { BsPlus } from 'react-icons/bs';
-import LibrarySongList from './LibrarySongList';
-import { TbPlaylist } from 'react-icons/tb';
 import { getLibrarySongs } from '@/actions/getLibrarySongs';
-import { use, useCallback, useEffect, useState } from 'react';
-import { ISong } from '@/types/types';
+import { addLibrarySongs } from '@/redux/song/songSlice';
+import { RootState } from '@/redux/store';
+import { IResponse, ISong } from '@/types/types';
+import { useEffect } from 'react';
+import { TbPlaylist } from 'react-icons/tb';
+import { useDispatch, useSelector } from 'react-redux';
+import LibrarySongList from './LibrarySongList';
 
 const Library = () => {
-  const [songs, setSongs] = useState<ISong[]>([]);
+  const dispatch = useDispatch();
 
-  const fetchLibrarySongs = useCallback(async () => {
-    const librarySongs: ISong[] = await getLibrarySongs();
+  const token: string | null = useSelector(
+    (state: RootState) => state.user.token
+  );
 
-    setSongs(librarySongs);
-  }, []);
+  const librarySongs: ISong[] = useSelector(
+    (state: RootState) => state.song.librarySongs
+  );
 
   useEffect(() => {
-    fetchLibrarySongs();
-  }, []);
+    if (token) {
+      const fetchLibrarySongs = async () => {
+        const data: IResponse = await getLibrarySongs({ token: token });
+
+        if (data.success && data.data.librarySongs.length > 0) {
+          dispatch(addLibrarySongs(data.data.librarySongs));
+        }
+      };
+
+      fetchLibrarySongs();
+    } else {
+      dispatch(addLibrarySongs([]));
+    }
+  }, [dispatch, token]);
 
   return (
     <div className='flex h-full w-full flex-col items-start justify-start gap-4'>
-      <div className='flex w-full items-center justify-between text-neutral-400'>
+      <div className='flex w-full items-center justify-start text-neutral-400'>
         <div className='flex items-center justify-start gap-2'>
           <TbPlaylist size={25} />
-          <p className='text-sm font-semibold'>Your Library</p>
+          <p className='text-sm font-semibold'>My Library</p>
         </div>
-        <button className='hover:scale-110'>
-          <BsPlus size={30} />
-        </button>
       </div>
-      <div>{songs && <LibrarySongList songs={songs} />}</div>
+      <div>
+        {token && librarySongs && (
+          <LibrarySongList librarySongs={librarySongs} />
+        )}
+      </div>
     </div>
   );
 };

@@ -6,7 +6,7 @@ export interface UserState {
 }
 
 const initialState: UserState = {
-  token: 'user',
+  token: null,
 };
 
 export const userSlice = createSlice({

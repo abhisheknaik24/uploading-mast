@@ -1,11 +1,14 @@
-export const getLibrarySongs = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/getLibrarySongs`);
+export const getLibrarySongs = async ({ token }: { token: string }) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API}/api/songs/getLibrarySongs`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 
-  const data = await res.json();
-
-  if (data.status) {
-    return data.data;
-  }
-
-  return null;
+  return res.json();
 };

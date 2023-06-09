@@ -1,28 +1,28 @@
 import { IconType } from 'react-icons';
 
 export interface IUser {
-  firstname?: string;
-  lastname?: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
   password?: string;
   picture?: string;
 }
 
+export interface ICategory {
+  _id: string;
+  category: string;
+  image?: string;
+  name: string;
+}
+
 export interface ISong {
-  id: string;
+  _id: string;
+  category?: string;
   title: string;
   desc: string;
   author: string;
   thumbnail: string;
   audio: string;
-  liked?: boolean;
-  category?: string;
-}
-
-export interface IPlaylist {
-  category: string;
-  image?: string;
-  label: string;
 }
 
 export interface IRoute {
@@ -37,4 +37,10 @@ export interface IInput {
   type: string;
   id: string;
   name: string;
+}
+
+export interface IResponse {
+  success: boolean;
+  data?: any;
+  message?: string;
 }
