@@ -63,7 +63,7 @@ const Home = () => {
   }, [search]);
 
   return (
-    <div className='h-full w-full'>
+    <div className='h-full w-full overflow-y-auto scrollbar-hide'>
       <Box className='min-h-full'>
         <Header>
           <div>
