@@ -22,7 +22,11 @@ const SongListDetails: React.FC<ISong> = ({
     >
       <div className='relative h-16 w-16'>
         <Image
-          src={process.env.NEXT_PUBLIC_API + '/images/' + thumbnail}
+          src={
+            thumbnail
+              ? process.env.NEXT_PUBLIC_API + '/images/' + thumbnail
+              : '/assets/images/default-img.webp'
+          }
           alt={title}
           className='rounded-sm object-cover'
           fill

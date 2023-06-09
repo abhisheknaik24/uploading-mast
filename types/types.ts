@@ -21,7 +21,7 @@ export interface ISong {
   title: string;
   desc: string;
   author: string;
-  thumbnail: string;
+  thumbnail?: string;
   audio: string;
 }
 

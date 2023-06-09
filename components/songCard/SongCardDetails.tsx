@@ -56,7 +56,11 @@ const SongCardDetails: React.FC<ISong> = ({
       )}
       <div className='relative h-80 w-full sm:h-40'>
         <Image
-          src={process.env.NEXT_PUBLIC_API + '/images/' + thumbnail}
+          src={
+            thumbnail
+              ? process.env.NEXT_PUBLIC_API + '/images/' + thumbnail
+              : '/assets/images/default-img.webp'
+          }
           alt={title}
           className='rounded-sm object-cover'
           fill

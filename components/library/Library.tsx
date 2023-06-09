@@ -44,7 +44,7 @@ const Library = () => {
           <p className='text-sm font-semibold'>My Library</p>
         </div>
       </div>
-      <div>
+      <div className='overflow-y-auto scrollbar-hide'>
         {token && librarySongs && (
           <LibrarySongList librarySongs={librarySongs} />
         )}

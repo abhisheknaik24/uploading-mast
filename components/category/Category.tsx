@@ -19,7 +19,11 @@ const Category: React.FC<CategoryProps> = ({
     >
       <div className='relative h-16 w-1/5'>
         <Image
-          src={image || ''}
+          src={
+            image
+              ? process.env.NEXT_PUBLIC_API + '/images/' + image
+              : '/assets/images/default-img.webp'
+          }
           alt='img'
           className='rounded-sm object-cover'
           fill
