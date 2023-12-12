@@ -37,7 +37,7 @@ const SongCard = ({
           : 'bg-neutral-800/50 hover:bg-neutral-800'
       )}
     >
-      <div className='relative h-60 w-full sm:h-40'>
+      <div className='relative h-24 w-full sm:h-40'>
         <Image
           src={thumbnail || '/assets/images/default-img.webp'}
           alt={title}

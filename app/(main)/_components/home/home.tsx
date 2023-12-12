@@ -9,12 +9,12 @@ import { memo } from 'react';
 
 const Songs = dynamic(() => import('../song/songs'), {
   loading: () => (
-    <div className='grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
-      <Skeleton className='h-80 w-full sm:h-60' />
-      <Skeleton className='h-80 w-full sm:h-60' />
-      <Skeleton className='h-80 w-full sm:h-60' />
-      <Skeleton className='h-80 w-full sm:h-60' />
-      <Skeleton className='h-80 w-full sm:h-60' />
+    <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+      <Skeleton className='h-[184px] w-full sm:h-60' />
+      <Skeleton className='h-[184px] w-full sm:h-60' />
+      <Skeleton className='h-[184px] w-full sm:h-60' />
+      <Skeleton className='h-[184px] w-full sm:h-60' />
+      <Skeleton className='h-[184px] w-full sm:h-60' />
     </div>
   ),
   ssr: false,
