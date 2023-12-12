@@ -12,7 +12,7 @@ import { useInfiniteQuery } from 'react-query';
 const SongCard = dynamic(
   () => import('@/app/(main)/_components/song/song-card'),
   {
-    loading: () => <Skeleton className='h-80 w-full sm:h-60' />,
+    loading: () => <Skeleton className='h-[184px] w-full sm:h-60' />,
     ssr: false,
   }
 );
@@ -45,12 +45,12 @@ const Songs = () => {
 
   if (isLoading) {
     return (
-      <div className='grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
-        <Skeleton className='h-80 w-full sm:h-60' />
-        <Skeleton className='h-80 w-full sm:h-60' />
-        <Skeleton className='h-80 w-full sm:h-60' />
-        <Skeleton className='h-80 w-full sm:h-60' />
-        <Skeleton className='h-80 w-full sm:h-60' />
+      <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+        <Skeleton className='h-[184px] w-full sm:h-60' />
+        <Skeleton className='h-[184px] w-full sm:h-60' />
+        <Skeleton className='h-[184px] w-full sm:h-60' />
+        <Skeleton className='h-[184px] w-full sm:h-60' />
+        <Skeleton className='h-[184px] w-full sm:h-60' />
       </div>
     );
   }
@@ -60,7 +60,7 @@ const Songs = () => {
   }
 
   return (
-    <div className='grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+    <div className='grid grid-cols-2 gap-4 pb-20 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
       {!!data?.pages.length &&
         data.pages.map((page) =>
           page.songs.map(
