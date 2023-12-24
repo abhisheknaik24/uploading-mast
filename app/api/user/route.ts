@@ -24,7 +24,7 @@ export async function POST(req: Request) {
 
     if (!user) {
       const cipherPassword = CryptoJS.AES.encrypt(
-        'abhi@123',
+        'admin@123',
         process.env.CRYPTO_SECRET as string
       );
 

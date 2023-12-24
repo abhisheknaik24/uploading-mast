@@ -45,4 +45,6 @@ CRYPTO_SECRET=
 
 ```shell
 docker compose up -d --build
+
+docker compose exec app npm run postgenerate
 ```

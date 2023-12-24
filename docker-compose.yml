@@ -1,19 +1,32 @@
 version: '3'
 services:
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: uploading_mast
+      MYSQL_ROOT_PASSWORD: Mysql123
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - web_network
+
   app:
     container_name: uploading-mast
     build:
       context: .
       dockerfile: docker/app/Dockerfile
-    volumes:
-      - .:/app
-      - next:/app/.next
-      - node_modules:/app/node_modules
     ports:
       - 3000:3000
     restart: always
+    volumes:
+      - /home/abhi/ABHI/uploading-mast:/app
     networks:
       - web_network
+    depends_on:
+      - mysql
 
   nginx:
     container_name: nginx
@@ -32,7 +45,5 @@ networks:
     driver: bridge
 
 volumes:
-  next:
-    driver: local
-  node_modules:
+  mysql_data:
     driver: local

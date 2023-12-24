@@ -1,17 +1,15 @@
 'use client';
 
-import Image from 'next/image';
 import { memo, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-interface ImageUploadProps {
-  type?: 'profile';
+interface AudioUploadProps {
   value?: string;
   onChange: (base64: string) => void;
   disabled: boolean;
 }
 
-const ImageUpload = ({ type, value, onChange, disabled }: ImageUploadProps) => {
+const AudioUpload = ({ value, onChange, disabled }: AudioUploadProps) => {
   const handleDrop = useCallback(
     (files: File[]) => {
       const file = files[0];
@@ -31,10 +29,7 @@ const ImageUpload = ({ type, value, onChange, disabled }: ImageUploadProps) => {
     maxFiles: 1,
     onDrop: handleDrop,
     accept: {
-      'image/jpg': ['.jpg'],
-      'image/jpeg': ['.jpeg'],
-      'image/png': ['.png'],
-      'image/webp': ['.webp'],
+      'audio/mpeg': ['.mp3'],
     },
     disabled,
   });
@@ -48,30 +43,17 @@ const ImageUpload = ({ type, value, onChange, disabled }: ImageUploadProps) => {
     >
       <input {...getInputProps()} />
       {value ? (
-        type === 'profile' ? (
-          <div className='relative h-24 w-24'>
-            <Image
-              src={value}
-              alt='profile'
-              className='rounded-full object-cover'
-              fill
-            />
-          </div>
-        ) : (
-          <div className='relative h-60 w-full'>
-            <Image
-              src={value}
-              alt='image'
-              className='rounded-sm object-cover'
-              fill
-            />
-          </div>
-        )
+        <div className='relative h-full w-full'>
+          <audio className='w-full' controls>
+            <source src={value} type='audio/mpeg' />
+            Your browser does not support the audio tag.
+          </audio>
+        </div>
       ) : (
-        <p>Please upload an image file!</p>
+        <p>Please upload an audio file!</p>
       )}
     </div>
   );
 };
 
-export default memo(ImageUpload);
+export default memo(AudioUpload);
