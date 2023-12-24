@@ -34,6 +34,8 @@ import {
   FormMessage,
 } from '../ui/form';
 import { Input } from '../ui/input';
+import AudioUpload from '../upload/AudioUpload';
+import ImageUpload from '../upload/ImageUpload';
 
 const formSchema = z.object({
   playlistId: z.string().min(1, {
@@ -203,10 +205,10 @@ const AddSongModal = () => {
                 <FormItem>
                   <FormLabel>Thumbnail</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder='Thumbnail'
+                    <ImageUpload
+                      value={field.value}
+                      onChange={field.onChange}
                       disabled={isSubmitting}
-                      {...field}
                     />
                   </FormControl>
                   <FormMessage />
@@ -220,10 +222,10 @@ const AddSongModal = () => {
                 <FormItem>
                   <FormLabel>Audio</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder='Audio'
+                    <AudioUpload
+                      value={field.value}
+                      onChange={field.onChange}
                       disabled={isSubmitting}
-                      {...field}
                     />
                   </FormControl>
                   <FormMessage />

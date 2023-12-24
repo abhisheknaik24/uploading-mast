@@ -54,6 +54,6 @@
     "typescript": "^5"
   },
   "prisma": {
-    "schema": "prisma/mongodb/schema.prisma"
+    "schema": "prisma/mysql/schema.prisma"
   }
 }
